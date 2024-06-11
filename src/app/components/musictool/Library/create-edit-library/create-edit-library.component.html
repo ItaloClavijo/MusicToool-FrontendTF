@@ -1,0 +1,55 @@
+<div class="title-container ">
+
+    @if (edicion) {
+      <div><h1>Edicion de Libreria</h1></div>
+    }@else {
+      <div><h1>Registro de Libreria</h1></div>
+    }
+   
+    <form [formGroup]="form" (submit)="registrar()">
+
+      @if (edicion) {
+        <mat-form-field class="example-full-width" >
+          <mat-label>Código</mat-label>
+          <input matInput placeholder="Codigo" formControlName="codigo" readonly/>
+        </mat-form-field>
+      }
+
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+          >El nombre es obligatorio.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion"/>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+          >La descripcion obligatoria.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Disponibilidad</mat-label>
+        <mat-select formControlName="disponible">
+          <mat-option *ngFor="let element of disponible" [value]="element.value">
+            {{ element.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('disponible')?.hasError('required')"
+        >La disponibilidad es obligatoria.</mat-error
+      >
+      </mat-form-field>
+      
+      @if (edicion) {
+        <button mat-raised-button color="primary">Editar</button>
+      }@else {
+        <button mat-raised-button color="primary">Registrar</button>
+      }
+      
+    </form>
+  </div>
+  
+
