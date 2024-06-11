@@ -5,7 +5,7 @@ import { Content } from '../../../../model/Content';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ApiImgPipe } from '../../../../shared/api-img.pipe';
+import { ApiImgPipe } from '../../../../../shared/api-img.pipe';
 import { CommonModule } from '@angular/common';
 
 @Component({
