@@ -1,0 +1,12 @@
+.spacer {
+    flex-grow: 1;
+  }
+  .custom-toolbar {
+    background-color: #93a5bb;
+    color: white; /* Asegúrate de que el texto sea legible */
+  }
+  .custom-toolbar button {
+    color: white; /* Asegúrate de que el texto sea legible */
+  }
+
+  
