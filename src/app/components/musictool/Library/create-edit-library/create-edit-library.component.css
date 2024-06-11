@@ -1,0 +1,97 @@
+.title-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 24px;
+  }
+  
+  .title-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-form-field input {
+    width: 100%;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #424242;
+    margin-bottom: 8px;
+  }
+  
+  .mat-checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  
+  .mat-checkbox label {
+    margin-left: 8px;
+    font-size: 1rem;
+    color: #424242;
+  }
+  
+  .mat-checkbox .mat-checkbox-frame {
+    border-radius: 2px;
+  }
+  
+  .mat-raised-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #1976d2;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .mat-raised-button:hover {
+    background-color: #1565c0;
+  }
+  
+  .mat-error {
+    color: #d32f2f;
+  }
+  
+  .mat-hint {
+    font-size: 0.875rem;
+    color: #757575;
+  }
+  
+  .mat-datepicker-toggle {
+    margin-left: 8px;
+  }
+  
+  .mat-datepicker-toggle .mat-icon {
+    color: #757575;
+  }
+/*  :host {
+    display: block;
+    height: 100vh;
+    background-image: url('https://img.freepik.com/foto-gratis/trabajador-fabrica-sosteniendo-portapapeles-comprobando-inventario-departamento-almacenamiento-almacen_342744-1491.jpg?w=1380&t=st=1716971159~exp=1716971759~hmac=b5d864e8a62ebae06028bc5038ce5755a05c8dfcbb99264c20b5c7257073aa55');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}*/
+  
