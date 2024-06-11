@@ -1,1 +1,127 @@
-<p>create-edit-content works!</p>
+<div class="title-container">
+  <div class="title-form">
+    <!-- Aquí va tu formulario -->
+
+    @if (edicion) {
+    <div><h1>Edicion de Contenido</h1></div>
+    }@else {
+    <div><h1>Registro de Contenido</h1></div>
+    }
+
+    <form [formGroup]="form" (submit)="registrar()">
+      @if (edicion) {
+      <mat-form-field class="example-full-width">
+        <mat-label>Código</mat-label>
+        <input
+          matInput
+          placeholder="Codigo"
+          formControlName="codigo"
+          readonly
+        />
+      </mat-form-field>
+      }
+
+      <mat-form-field>
+        <mat-label>Titulo</mat-label>
+        <input matInput formControlName="titulo"/>
+        <mat-error *ngIf="form.get('titulo')?.hasError('required')"
+          >El titulo es obligatorio.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion" />
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+          >La descripcion obligatoria.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gratuito</mat-label>
+        <mat-select formControlName="free">
+          <mat-option *ngFor="let element of free" [value]="element.value">
+            {{ element.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('free')?.hasError('required')"
+          >La opcion es obligatoria.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Precio</mat-label>
+        <input matInput formControlName="precio" />
+        <mat-error *ngIf="form.get('precio')?.hasError('required')"
+          >El precio obligatorio.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let element of Tipos" [value]="element.value">
+            {{ element.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipo')?.hasError('required')"
+          >El tipo es obligatoria.</mat-error
+        >
+      </mat-form-field>
+
+      <div class="file-upload-container">
+        <label>Portada</label>
+        <input
+          id="cover"
+          type="file"
+          class="form-control"
+          accept=".png,.jpg,.jpeg"
+          (change)="uploadFile($event, 'cover')"
+        />
+        <div class="small text-muted">
+          ruta actual: {{ form.get("cover")!.value }}
+        </div>
+        <mat-error class="small">
+          @if (form.get('cover')!.hasError('required') &&
+          form.get('cover')!.touched ) { La portada es obligatoria }
+        </mat-error>
+      </div>
+
+      <div class="file-upload-container">
+        <label>Archivo Sample</label>
+        <input
+          id="mp3"
+          type="file"
+          class="form-control"
+          accept="audio/mpeg"
+          (change)="uploadFile($event, 'file')"
+        />
+        <div class="small text-muted">
+          ruta actual: {{ form.get("file")!.value }}
+        </div>
+        <mat-error>
+          @if (form.get('file')?.hasError('required') &&
+          form.get('file')!.touched ) { El archivo de audio es obligatorio }
+        </mat-error>
+      </div>
+
+      
+      @if (edicion) {
+      <button mat-raised-button color="primary">Editar</button>
+      }@else {
+      <button mat-raised-button color="primary">Registrar</button>
+      }
+    </form>
+  </div>
+
+  <div class="portada">
+    @if (form.get('cover')?.value) {
+    <div>Portada</div>
+    <img
+      [src]="form.get('cover')?.value | apiImg"
+      alt=""
+      class="img-thumbnail"
+    />
+    }@else { Sin portada }
+  </div>
+</div>
