@@ -1,0 +1,130 @@
+<div class="container">
+    <div>
+      <h1>Lista de Contenidos</h1>
+    </div>
+    <div class="container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Codigo </th>
+          <td mat-cell *matCellDef="let element"> {{element.idContent}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cover">
+            <th mat-header-cell *matHeaderCellDef> Contenido </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="d-flex gap-2">
+                  <img [src]="element.coverContent | apiImg" alt="" class="mw-96px">
+                  <div class="fw-bold">
+                      {{element.titleContent}}
+                      <p>{{element.descriptionContent}}</p>
+                  </div>
+              </div>
+          </td>
+          </ng-container>
+  
+       <!-- <ng-container matColumnDef="titulo">
+          <th mat-header-cell *matHeaderCellDef> Titulo </th>
+          <td mat-cell *matCellDef="let element"> {{element.titleContent}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+          <td mat-cell *matCellDef="let element"> {{element.descriptionContent}} </td>
+        </ng-container>-->
+
+        <ng-container matColumnDef="file">
+          <th mat-header-cell *matHeaderCellDef> Sample </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="music-player">
+              <button mat-icon-button (click)="togglePlay(element)">
+                <mat-icon>{{ element.isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
+              </button>
+              <input type="range" min="0" [max]="element.duration" [value]="element.currentTime" (input)="onSeek($event, element)" />
+              <div class="time-info">
+                <span>{{ formatTime(element.currentTime) }}</span> / <span>{{ formatTime(element.duration) }}</span>
+              </div>
+            </div>
+          </td>
+        </ng-container> 
+        
+        <ng-container matColumnDef="free">
+          <th mat-header-cell *matHeaderCellDef> Gratuito </th>
+          <td mat-cell *matCellDef="let element"> @if(element.freeContent){
+              Si
+          }@else {
+              No
+          }
+      
+      </td>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let element"> {{element.priceContent | currency }} </td>
+        </ng-container>
+
+       
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let element"> {{element.typeContent}} </td>
+          </ng-container>
+
+         
+    
+        <ng-container matColumnDef="libreria">
+            <th mat-header-cell *matHeaderCellDef> Libreria </th>
+            <td mat-cell *matCellDef="let element"> @if(element.library){
+                {{element.library}}
+            }@else {
+                No definido
+            }
+        
+        </td>
+          </ng-container>
+
+          
+        <ng-container matColumnDef="artista">
+            <th mat-header-cell *matHeaderCellDef> Artista </th>
+            <td mat-cell *matCellDef="let element"> @if(element.artist){
+                {{element.artist}}
+            }@else {
+                No definido
+            }
+        
+        </td>
+          </ng-container>
+
+          <ng-container matColumnDef="accion01">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-raised-button
+                [routerLink]="['ediciones', element.idContent]"
+                class="accion"
+              >
+              <mat-icon>edit</mat-icon>        </button>
+            </td></ng-container
+          >
+          <ng-container matColumnDef="accion02">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-raised-button
+                class="accion"
+                (click)="eliminar(element.idContent)"
+              >
+              <mat-icon color="warn" >delete_forever</mat-icon>
+            </button>
+            </td></ng-container
+          >
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[4, 7, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+

@@ -1,0 +1,46 @@
+img.mw-96px {
+    max-width: 96px; /* Establece el ancho máximo de la imagen */
+    height: auto; /* Mantiene la proporción de aspecto */
+  }
+  
+  /* Estilos para el contenedor del texto */
+  div.fw-bold {
+    font-weight: bold; /* Establece el peso de la fuente en negrita */
+  }
+  
+  /* Estilos para el párrafo */
+  div.fw-bold p {
+    font-weight: lighter; 
+    margin-top: 0.5rem; /* Agrega un margen superior al párrafo */
+  }
+  .accion{
+    border-style: none;
+    background-color: transparent;
+}
+.music-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-player button {
+  display: block;
+  margin: 0 auto;
+  border-style: none;
+  background-color: transparent;
+}
+
+.music-player input[type="range"] {
+  width: 100%;
+  margin: 0;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+
