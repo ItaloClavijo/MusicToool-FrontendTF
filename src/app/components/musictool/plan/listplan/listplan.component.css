@@ -1,0 +1,73 @@
+.title-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3f51b5;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .custom-table {
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .mat-header-cell {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .mat-cell {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  button {
+    margin: 0 5px;
+  }
+  
+  button mat-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .mat-paginator {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mat-paginator-range-label {
+    margin: 0 10px;
+  }
+  
+  .mat-paginator-icon {
+    font-size: 1.2rem;
+  }
+  
+  .mat-paginator-page-size {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+  
+  .mat-form-field {
+    font-size: 2rem;
+    width: 150px;
+  }
