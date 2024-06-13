@@ -4,22 +4,43 @@ import { CreateEditLibraryComponent } from './components/musictool/Library/creat
 import { ContentComponent } from './components/musictool/content/content.component';
 import { CreateEditContentComponent } from './components/musictool/content/create-edit-content/create-edit-content.component';
 import { IndexComponent } from './components/musictool/home/index/index.component';
+import { UsersComponent } from './components/musictool/users/users.component';
+import { CreaeditausersComponent } from './components/musictool/users/creaeditausers/creaeditausers.component';
+import { ListarusersComponent } from './components/musictool/users/listarusers/listarusers.component';
+import { RolesComponent } from './components/musictool/roles/roles.component';
+import { CreaeditarolesComponent } from './components/musictool/roles/creaeditaroles/creaeditaroles.component';
+import { LoginComponent } from './components/musictool/login/login.component';
+import { segGuard } from './guard/seguridad.guard';
 
-export const routes: Routes = [{
+export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+    {
     path:'library',
     title:'Librerias',
     component:LibraryComponent,
     children:[
         {path:'new',title:'Nueva Libreria',component:CreateEditLibraryComponent},
         {path:'ediciones/:id',title:'Edicion de Libreria',component:CreateEditLibraryComponent} 
-    ]},
+    ],
+    canActivate: [segGuard]
+},
 
     {
     path:'content', title:'Contenidos', component:ContentComponent,
     children:[
         {path:'new',title:'Nuevo Contenido',component:CreateEditContentComponent},
         {path:'ediciones/:id',title:'Edicion de Contenido',component:CreateEditContentComponent} 
-    ]},
+    ],
+    canActivate: [segGuard]
+},
     
    // {
    //  path:'purchase',title:'Compras', component:PurchaseComponent,
@@ -29,8 +50,26 @@ export const routes: Routes = [{
  //    ]},
 
     {
-        path:'',
+        path:'homes',
         title: 'Inicio',
-        component:IndexComponent
+        component:IndexComponent,
+        canActivate: [segGuard]
+    },
+
+    {
+        path:'usuarios',component:UsersComponent,
+        children:[
+            { path: 'nuevo', component:CreaeditausersComponent },
+            { path: 'ediciones/:id', component:ListarusersComponent }
+        ],
+        canActivate: [segGuard]
+    },
+    {
+        path:'roles',component:RolesComponent,
+        children:[
+            { path: 'nuevo', component:CreaeditarolesComponent}
+        ],
+        canActivate: [segGuard] 
     }
+
 ];
