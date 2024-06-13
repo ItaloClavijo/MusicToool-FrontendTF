@@ -16,7 +16,7 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
 
   list(){
-    return this.httpClient.get(this.url)
+    return this.httpClient.get<Users[]>(this.url)
   }
 
   insert(u:Users){

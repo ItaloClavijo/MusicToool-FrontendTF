@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { Users } from "./User";
 
 export class Library {
 
@@ -6,5 +6,5 @@ export class Library {
     libraryAvailable: boolean = false
     libraryName: string  = ""
     libraryDescription: string = ""
-    usersId?: User = new User()
+    usersId?: Users = new Users()
 }

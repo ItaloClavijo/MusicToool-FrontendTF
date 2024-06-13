@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="title-container">
+        <div>
+            <h1>REGISTRO</h1>
+        </div>
+        <form [formGroup]="form" (submit)="registrar()">
+            <mat-form-field *ngIf="edicion" >
+                <mat-label>Codigo</mat-label>
+                <input matInput placeholder="Codigo" formControlName="codigo" />      
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="nombre">
+                <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+                <mat-error *ngIf="form.get('nombre')?.hasError('minLenght')">Mínimo permitido es de 3</mat-error>
+                <mat-error *ngIf="form.get('nombre')?.hasError('maxLenght')">Máximo permitido es de 30</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="contra">
+                <mat-error *ngIf="form.get('contra')?.hasError('required')">La contraseña es obligatorio.</mat-error>
+                <mat-error *ngIf="form.get('contra')?.hasError('min')">Rango mínimo de 10 carácteres</mat-error>
+                <mat-error *ngIf="form.get('contra')?.hasError('max')">Rango de contraseña no permitido.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width"  *ngIf="edicion">
+                <mat-label>Estado de Cuenta</mat-label>
+                <mat-select formControlName="estado">
+                    <mat-option *ngFor="let u of estados" [value]="u.value">
+                        {{ u.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('estado')?.hasError('required')">Seleccione una opción</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="correo">
+                <mat-error *ngIf="form.get('correo')?.hasError('required')">El correo es obligatorio.</mat-error>
+                <mat-error *ngIf="form.get('correo')?.hasError('pattern')">Correo inválido.</mat-error>
+                <mat-error *ngIf="form.get('correo')?.hasError('min')">Rango de correo no permitido.</mat-error>
+                <mat-error *ngIf="form.get('correo')?.hasError('max')">Rango de correo no permitido.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="edicion">
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="desc"></textarea>
+                <mat-error *ngIf="form.get('desc')?.hasError('min')">Rango mínimo de 10 carácteres</mat-error>
+                <mat-error *ngIf="form.get('desc')?.hasError('max')">Rango máximo superado.</mat-error>
+              </mat-form-field>
+
+            <div class="text-end">
+                <button mat-raised-button color="primary">Agregar</button>
+                <button mat-raised-button color="warn" routerLink="/usuarios">
+                    <mat-icon> cancel_presentation</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
