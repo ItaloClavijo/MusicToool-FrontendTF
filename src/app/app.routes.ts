@@ -11,6 +11,13 @@ import { RolesComponent } from './components/musictool/roles/roles.component';
 import { CreaeditarolesComponent } from './components/musictool/roles/creaeditaroles/creaeditaroles.component';
 import { LoginComponent } from './components/musictool/login/login.component';
 import { segGuard } from './guard/seguridad.guard';
+import { PlanComponent } from './components/musictool/plan/plan.component';
+import { CreaeditaplanComponent } from './components/musictool/plan/creaeditaplan/creaeditaplan.component';
+import { MessageComponent } from './components/musictool/message/message.component';
+import { CreaeditaMessageComponent } from './components/musictool/message/creaedita-message/creaedita-message.component';
+import { ChatComponent } from './components/musictool/chat/chat.component';
+import { CreaeditachatComponent } from './components/musictool/chat/creaeditachat/creaeditachat.component';
+
 
 export const routes: Routes = [
     {
@@ -42,13 +49,14 @@ export const routes: Routes = [
     canActivate: [segGuard]
 },
     
+    
    // {
    //  path:'purchase',title:'Compras', component:PurchaseComponent,
   //   children:[
    //  {path:'new',title:'Nueva Compra',component:CreateEditPurchaseComponent},
   //   {path:'ediciones/:id',title:'Edicion de Compra',component:CreateEditPurchaseComponent} 
  //    ]},
-
+  
     {
         path:'homes',
         title: 'Inicio',
@@ -71,5 +79,27 @@ export const routes: Routes = [
         ],
         canActivate: [segGuard] 
     }
+
+
+ 
+    {path:'plans',component:PlanComponent,
+    children:[
+        {path:'creaeditaplan',component:CreaeditaplanComponent},
+    ]
+  canActivate: [segGuard]
+},
+    {path:'message',component:MessageComponent,
+    children:[
+        {path:'creaeditamessage',component:CreaeditaMessageComponent},
+    ],
+    canActivate: [segGuard]
+    },
+    
+    {path:'chats',component:ChatComponent,
+        children:[
+            {path:'creaeditachats',component:CreaeditachatComponent},
+        ],
+    canActivate: [segGuard]
+    },
 
 ];

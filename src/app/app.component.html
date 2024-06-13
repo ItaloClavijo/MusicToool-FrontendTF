@@ -1,12 +1,17 @@
 <mat-toolbar class="custom-toolbar" *ngIf="verificar()">
   <mat-icon>headphones</mat-icon>
   <span>MusicTool</span>
+
   <button class="ms-3" mat-button routerLink="/homes" *ngIf="isAdmin()">Inicio</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuLibrary" *ngIf="isAdmin()">Library</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuContent" *ngIf="isAdmin()">Content</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuPurchase" *ngIf="isAdmin()">Purchase</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuUser" *ngIf="isAdmin()">User</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuRoles"*ngIf="isAdmin()">Roles</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuMessage">Message</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuChat">Chat</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuPlans">Plans</button>
+
 
   <span class="spacer"></span>
 
@@ -40,6 +45,31 @@
     <mat-icon color="primary">favorite</mat-icon>
     Crear</button>
   <button mat-menu-item routerLink="/musictool/artist/list">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Listar</button>
+</mat-menu>
+<mat-menu #menuMessage="matMenu">
+  <button mat-menu-item routerLink="/message/creaeditamessage">
+    <mat-icon color="primary">favorite</mat-icon>
+    Crear</button>
+  <button mat-menu-item routerLink="/message">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuChat="matMenu">
+  <button mat-menu-item routerLink="/chats/creaeditachats">
+    <mat-icon color="primary">favorite</mat-icon>
+    Crear</button>
+  <button mat-menu-item routerLink="/chats">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Listar</button>
+</mat-menu>
+<mat-menu #menuPlans="matMenu">
+  <button mat-menu-item routerLink="/plans/creaeditaplan">
+    <mat-icon color="primary">favorite</mat-icon>
+    Crear</button>
+  <button mat-menu-item routerLink="/plans">
     <mat-icon color="primary">more_vert</mat-icon>
     Listar</button>
 </mat-menu>
