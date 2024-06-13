@@ -1,0 +1,11 @@
+mat-form-field {
+    width: 50%;
+  }
+  .logo {
+    width: 10px; /* Ancho del logo */
+    height: 10px; /* Alto del logo */
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortarla */
+    display: block; /* Asegura que la imagen se comporte como un elemento de bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente si está dentro de un contenedor */
+}
+  
