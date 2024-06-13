@@ -1,0 +1,78 @@
+<div class="title-container">
+    <div><h2 class="title">Enviar mensaje</h2>
+  </div>
+  <div class="title-container">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      <mat-form-field class="example-full-width"  *ngIf="edicion" >
+        <mat-label>Codigo de Mensaje</mat-label>
+        <input matInput placeholder="Codigo" formControlName="codigomensaje" />      
+      </mat-form-field>
+      <br/>
+     <!--
+      <mat-form-field class="example-full-width">
+        <mat-label>Destinatario</mat-label>
+        <mat-select formControlName="nombreusuario">
+          <mat-option *ngFor="let c of listaAreasVerdes" [value]="c.idGreenArea">
+            {{ c.nameGreenArea }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('nombreusuario')?.hasError('required')"
+          >El área verde es obligatoria.</mat-error
+        >
+      </mat-form-field>
+      -->
+      <br />
+      <mat-form-field class="example-full-width">
+        <textarea
+          matInput
+          placeholder="Descripción"
+          formControlName="descripcionmensaje"
+        ></textarea>
+        <mat-error *ngIf="form.get('descripcionmensaje')?.hasError('required')"
+          >La descripción es obligatoria.</mat-error
+        >
+      </mat-form-field>
+  
+      <br />
+      <mat-form-field appearance="fill" class="example-full-width">
+        <input
+          matInput
+          placeholder="Ingrese fecha"
+          [matDatepicker]="picker"
+          formControlName="fechademensaje"
+          [max]="maxFecha"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fechademensaje')?.hasError('required')"
+          >La fecha es obligatoria.</mat-error
+        >
+      </mat-form-field>
+  
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Código chat</mat-label>
+        <mat-select formControlName="chatid">
+          <mat-option *ngFor="let g of codigochat" [value]="g.value">
+            {{ g.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('chatid')?.hasError('required')"
+          >El código de chat es obligatorio.</mat-error
+        >
+      </mat-form-field>
+  
+      <br />
+      <button mat-raised-button color="primary">Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="message"><mat-icon> cancel_presentation</mat-icon>
+      </button>
+    </form>
+  </div>
+</div>
+  
+  
+
