@@ -1,17 +1,21 @@
-<mat-toolbar class="custom-toolbar">
+<mat-toolbar class="custom-toolbar" *ngIf="verificar()">
   <mat-icon>headphones</mat-icon>
   <span>MusicTool</span>
-  <button class="ms-3" mat-button routerLink="/">Inicio</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuLibrary">Library</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuContent">Content</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuPurchase">Purchase</button>
+
+  <button class="ms-3" mat-button routerLink="/homes" *ngIf="isAdmin()">Inicio</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuLibrary" *ngIf="isAdmin()">Library</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuContent" *ngIf="isAdmin()">Content</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuPurchase" *ngIf="isAdmin()">Purchase</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuUser" *ngIf="isAdmin()">User</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuRoles"*ngIf="isAdmin()">Roles</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuMessage">Message</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuChat">Chat</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuPlans">Plans</button>
 
+
   <span class="spacer"></span>
 
-  <button class="ms-3" mat-button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuLogin">
     <mat-icon>account_circle</mat-icon>
     Italo
   </button>
@@ -70,6 +74,34 @@
     Listar</button>
 </mat-menu>
 
+<mat-menu #menuUser="matMenu">
+  <button mat-menu-item routerLink="/usuarios/nuevo">
+    <mat-icon color="primary">favorite</mat-icon>
+    Crear</button>
+  <button mat-menu-item routerLink="/usuarios">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Listar</button>
+</mat-menu>
 
+<mat-menu #menuRoles="matMenu">
+  <button mat-menu-item routerLink="/roles/nuevo">
+    <mat-icon color="primary">favorite</mat-icon>
+    Crear</button>
+  <button mat-menu-item routerLink="/roles">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Listar</button>
+</mat-menu>
+
+
+<mat-menu #menuLogin="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
 
 <router-outlet></router-outlet>
