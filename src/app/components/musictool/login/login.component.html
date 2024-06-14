@@ -1,22 +1,45 @@
-<div class="container" style="text-align: center">
-  <div>
-    <img src="" class="Logo" alt="Logo de la empresa" />
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="../../../../assets/logo.png" class="logo" alt="Logo de la empresa" />
+      <h2>Inicie sesión</h2>
+    </div>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input 
+          matInput 
+          placeholder="Username" 
+          [(ngModel)]="username" 
+          name="username" 
+          required 
+          #usernameInput="ngModel"
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          #passwordInput="ngModel"
+        />
+      </mat-form-field>
+      <br />
+      <button 
+        mat-raised-button 
+        class="colorb" 
+        type="submit" 
+        [disabled]="loginForm.invalid"
+      >
+        Ingresar
+      </button>
+    </form>
   </div>
-  <h2>Inicie sesión</h2>
-  <mat-form-field class="example-full-width">
-    <mat-label>Usuario</mat-label>
-    <input matInput placeholder="Username" [(ngModel)]="username" />
-  </mat-form-field>
-  <br />
-  <mat-form-field class="example-full-width">
-    <mat-label>Password</mat-label>
-    <input
-      type="password"
-      matInput
-      placeholder="Password"
-      [(ngModel)]="password"
-    />
-  </mat-form-field>
-  <br />
-  <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
 </div>
+
+
