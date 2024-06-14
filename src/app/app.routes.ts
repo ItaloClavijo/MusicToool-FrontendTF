@@ -16,14 +16,22 @@ import { MessageComponent } from './components/musictool/message/message.compone
 import { CreaeditaMessageComponent } from './components/musictool/message/creaedita-message/creaedita-message.component';
 import { ChatComponent } from './components/musictool/chat/chat.component';
 import { CreaeditachatComponent } from './components/musictool/chat/creaeditachat/creaeditachat.component';
+import { LandingComponent } from './components/musictool/landing/landing.component';
 
 
 export const routes: Routes = [
+
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'landing',
         pathMatch: 'full',
     },
+
+    {
+        path:'landing',
+        component: LandingComponent
+    },
+    
     {
         path: 'login',
         component: LoginComponent,
