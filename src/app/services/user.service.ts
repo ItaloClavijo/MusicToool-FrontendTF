@@ -32,7 +32,7 @@ export class UserService {
   }
 
   listId(id:number){
-    return this.httpClient.get<Users>(`${this.url}/${id}}`)
+    return this.httpClient.get<Users>(`${this.url}/${id}`)
   }
 
   update(u:Users){

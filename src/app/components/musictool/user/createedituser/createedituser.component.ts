@@ -68,9 +68,9 @@ export class CreateedituserComponent implements OnInit{
       codigo: [''],
       nombre: ['', [Validators.required,Validators.min(3),Validators.max(30)]],
       contra: ['', [Validators.required,Validators.min(10),Validators.max(200)]],
-      estado: ['', Validators.required],
+      estado: [''],
       correo: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$'), Validators.min(13), Validators.max(80)]],
-      desc: ['', [Validators.min(10),Validators.max(100)]]
+      desc: ['']
     });
   }
 
@@ -82,8 +82,8 @@ export class CreateedituserComponent implements OnInit{
       this.user.password = this.form.value.contra;
       this.user.enabled = true;
       this.user.email = this.form.value.correo;
-      if(this.form.value.desc = ""){
-        this.user.description = "Hola, soy " +  this.form.value.nombre;
+      if(this.form.value.desc === ""){
+        this.user.description = "Hola, soy "+`${this.form.value.nombre}`;
       }else{
         this.user.description = this.form.value.desc
       }
