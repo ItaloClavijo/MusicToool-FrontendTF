@@ -4,9 +4,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
+import { CartService } from './services/cart.service';
+import { ApiImgPipe } from '../shared/api-img.pipe';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +20,10 @@ import { UserService } from './services/user.service';
      MatMenuModule,
     MatButtonModule,
     RouterLink,
-    NgIf
+    NgIf,
+    ApiImgPipe,
+    CommonModule,
+    MatBadgeModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -27,6 +33,7 @@ export class AppComponent {
   username: string = ''
   role: string = '';
   constructor(private loginService: LoginService,
+    private cartService: CartService
   ) {}
   cerrar() {
     sessionStorage.clear();
@@ -45,5 +52,13 @@ export class AppComponent {
     return this.role === 'ADMIN';
   }
   
+  get contentsInCart() {
+    return this.cartService.contents();
+  }
+
+  get total() {
+    return this.cartService.total();
+  }
+
 
 }
