@@ -20,7 +20,7 @@ export class ListchatComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private chatservice: ChatService) {}
   ngOnInit(): void {
-    this.chatservice.list().subscribe((data) => {
+    this.chatservice.getChats().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });

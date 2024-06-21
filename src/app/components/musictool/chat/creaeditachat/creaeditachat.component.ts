@@ -63,7 +63,7 @@ export class CreaeditachatComponent implements OnInit{
       this.chats.user1id = this.form.value.codigo1;
       this.chats.user2id = this.form.value.codigo2;
       this.chatservice.insert(this.chats).subscribe((data) => {
-        this.chatservice.list().subscribe((data) => {
+        this.chatservice.getChats().subscribe((data) => {
           this.chatservice.setList(data);
         });
       });
