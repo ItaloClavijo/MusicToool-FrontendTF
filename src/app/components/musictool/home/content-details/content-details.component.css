@@ -1,0 +1,31 @@
+.w-100 {
+    width: 100% !important;
+  }
+
+  .colorb{
+    background-color: #93a5bb;
+  }
+
+  .img-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    margin-top: 5rem; /* Ajusta este valor según la altura de tu toolbar */
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-icon {
+    margin-right: 0.5rem;
+}

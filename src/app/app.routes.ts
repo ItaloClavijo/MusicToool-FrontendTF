@@ -17,6 +17,9 @@ import { CreaeditaMessageComponent } from './components/musictool/message/creaed
 import { ChatComponent } from './components/musictool/chat/chat.component';
 import { CreaeditachatComponent } from './components/musictool/chat/creaeditachat/creaeditachat.component';
 import { LandingComponent } from './components/musictool/landing/landing.component';
+import { ContentDetailsComponent } from './components/musictool/home/content-details/content-details.component';
+import { ConversationComponent } from './components/musictool/chat/conversation/conversation.component';
+import { CartComponent } from './components/musictool/home/cart/cart.component';
 
 
 export const routes: Routes = [
@@ -55,6 +58,11 @@ export const routes: Routes = [
         ],
         canActivate: [segGuard]
     },
+
+    {
+        path:'content/:id', title:'Detalles de contenido', component:ContentDetailsComponent,
+        canActivate: [segGuard]
+    },
     
     
    // {
@@ -65,10 +73,16 @@ export const routes: Routes = [
  //    ]},
   
     {
-        path:'homes',
+        path:'home',
         title: 'Inicio',
         component:IndexComponent,
         canActivate: [segGuard]
+    },
+
+    {
+        path: 'cart',
+        title: 'Carrito de compras',
+        component: CartComponent
     },
 
     {
@@ -104,6 +118,7 @@ export const routes: Routes = [
         path:'chats',component:ChatComponent,
         children:[
             { path:'creaeditachats',component:CreaeditachatComponent },
+            { path:'conversation/:id',component:ConversationComponent },
         ],
         canActivate: [segGuard]
     }
