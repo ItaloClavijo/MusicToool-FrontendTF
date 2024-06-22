@@ -15,6 +15,7 @@
                 <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
                 <mat-error *ngIf="form.get('nombre')?.hasError('minLenght')">Mínimo permitido es de 3</mat-error>
                 <mat-error *ngIf="form.get('nombre')?.hasError('maxLenght')">Máximo permitido es de 30</mat-error>
+                <mat-error *ngIf="form.get('nombre')?.hasError('usernameTaken')">El nombre de usuario ya está en uso</mat-error>
             </mat-form-field>
 
 
