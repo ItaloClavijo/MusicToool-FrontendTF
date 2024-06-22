@@ -54,5 +54,19 @@ export class LoginService {
     }
     return null;
   }
+
+  getId() {
+    if (isPlatformBrowser(this.platformId)) {
+      let token = sessionStorage.getItem('token');
+      if (!token) {
+        return null;
+      }
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      console.log(decodedToken);
+      return decodedToken?.id;
+    }
+    return null;
+  }
 }
 
