@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Users } from '../model/User';
 import { HttpClient } from '@angular/common/http';
 
@@ -41,5 +41,9 @@ export class UserService {
 
   eliminar(id:number){
     return this.httpClient.delete(`${this.url}/${id}}`)
+  }
+
+  existsByUsername(username: string):Observable<boolean>{
+    return this.httpClient.get<boolean>(`${this.url}/?username=${username}`)
   }
 }
