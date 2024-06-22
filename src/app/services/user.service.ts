@@ -40,7 +40,7 @@ export class UserService {
   }
 
   eliminar(id:number){
-    return this.httpClient.delete(`${this.url}/${id}}`)
+    return this.httpClient.delete(`${this.url}/${id}`)
   }
 
   existsByUsername(username: string):Observable<boolean>{

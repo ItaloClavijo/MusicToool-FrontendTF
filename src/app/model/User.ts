@@ -6,4 +6,5 @@ export class Users {
     email: string = ""
     description: string=""
     registerDate: Date = new Date(Date.now())
+    file: string = ""
 }

@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Users } from '../../../../model/User';
 import { UserService } from '../../../../services/user.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MediaService } from '../../../../services/media.service';
 
 @Component({
   selector: 'app-createedituser',
@@ -58,7 +59,8 @@ export class CreateedituserComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private mediaService: MediaService
   ) {}
 
   ngOnInit(): void {
@@ -72,7 +74,7 @@ export class CreateedituserComponent implements OnInit {
     this.form = this.formBuilder.group({
       codigo: [''],
       nombre: [
-        '',
+      '',
         [Validators.required, Validators.min(3), Validators.max(30)],
       ],
       contra: [
@@ -92,11 +94,11 @@ export class CreateedituserComponent implements OnInit {
         ],
       ],
       desc: [''],
+      file: ['']
     });
   }
 
   registrar(): void {
-    console.log(this.form.value);
     if (this.form.valid) {
       const username = this.form.value.usuario;
       this.uS.existsByUsername(username).subscribe((exists: boolean) => {
@@ -106,11 +108,13 @@ export class CreateedituserComponent implements OnInit {
             duration: 3000,
           });
         } else {
+          console.log(this.form.value);
           this.user.id = this.form.value.codigo;
           this.user.username = this.form.value.nombre;
           this.user.password = this.form.value.contra;
           this.user.enabled = true;
           this.user.email = this.form.value.correo;
+          this.user.file = this.form.value.file;
           if (this.form.value.desc === '') {
             this.user.description = 'Hola, soy ' + `${this.form.value.nombre}`;
           } else {
@@ -137,8 +141,24 @@ export class CreateedituserComponent implements OnInit {
           estado: new FormControl(data.enabled),
           correo: new FormControl(data.email),
           desc: new FormControl(data.description),
+          file: new FormControl(data.file)
         });
       });
+    }
+  }
+
+  uploadFile(event: any, control: string) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file)
+
+      this.mediaService.upload(formData).subscribe(response => {
+        console.log('res', response)
+        this.form!.get(control)!.setValue(response.path);
+      }
+      )
     }
   }
 }

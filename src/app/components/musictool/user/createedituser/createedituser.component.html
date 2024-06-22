@@ -51,7 +51,24 @@
                 <textarea matInput formControlName="desc"></textarea>
                 <mat-error *ngIf="form.get('desc')?.hasError('min')">Rango mínimo de 10 carácteres</mat-error>
                 <mat-error *ngIf="form.get('desc')?.hasError('max')">Rango máximo superado.</mat-error>
-              </mat-form-field>
+            </mat-form-field>
+
+            <div class="file-upload-container mb-3">
+                <label>Archivo Sample</label>
+                <input
+                  id="mp3"
+                  type="file"
+                  class="form-control"
+                  accept=".png,.jpg,.jpeg"
+                  (change)="uploadFile($event, 'file')"
+                />
+                <div class="small text-muted">ruta actual: {{ form.get("file")!.value }}</div>
+                <mat-error>
+                  <ng-container *ngIf="form.get('file')?.hasError('required') && form.get('file')!.touched">
+                    El archivo de audio es obligatorio
+                  </ng-container>
+                </mat-error>
+              </div>
 
             <div class="text-end">
                 <button mat-raised-button color="primary">Agregar</button>
