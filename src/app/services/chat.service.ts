@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Chat } from '../model/Chat';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 const base_url=environment.base
 @Injectable({
@@ -12,7 +12,7 @@ export class ChatService {
   private listaCambio=new Subject<Chat[]>()
   constructor(private httpClient:HttpClient) { }  
 
-  list(){
+  getChats(){
     return this.httpClient.get<Chat[]>(this.url);
   }
   insert(c:Chat){
@@ -33,4 +33,13 @@ export class ChatService {
   eliminar(id: number) {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
+
+  getMessages(chatId: number): Observable<any> {
+    return this.httpClient.get(`${this.url}/${chatId}/messages`);
+  }
+
+  sendMessage(chatId: number, message: any): Observable<any> {
+    return this.httpClient.post(`${this.url}/${chatId}/messages`, message);
+  }
+
 }
