@@ -1,0 +1,55 @@
+<div class="title-container">
+    <div>
+        <h1>Lista Artistas</h1>
+    </div>
+    <div class="container">
+        <div class="table-wrapper">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef>Código</th>
+                    <td mat-cell *matCellDef="let element"> {{element.idArtist}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> Artista </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nameArtist}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="desc">
+                    <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                    <td mat-cell *matCellDef="let element"> {{element.descriptionArtist}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="correo">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.emailArtist}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="accion01">
+                    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="warn" [routerLink]="['ediciones', element.id]">
+                        <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="accion02">
+                    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="warn" (click)="eliminar(element.id)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+</div>
+
+

@@ -1,0 +1,55 @@
+<div class="title-container">
+  <h2 class="title">Registro de Artistas</h2>
+</div>
+<div class="title-container">
+  <form [formGroup]="form" (submit)="registrar()" class="example-form">
+    <mat-form-field class="example-full-width" *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput placeholder="Codigo" formControlName="codigo" />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Artista:</mat-label>
+      <input matInput placeholder="Artista" formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+        >El nombre es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="desc"></textarea>
+      <mat-error *ngIf="form.get('desc')?.hasError('min')"
+        >Rango mínimo de 10 carácteres</mat-error
+      >
+      <mat-error *ngIf="form.get('desc')?.hasError('max')"
+        >Rango máximo superado.</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="correo" />
+      <mat-error *ngIf="form.get('correo')?.hasError('required')"
+        >El correo es obligatorio.</mat-error
+      >
+      <mat-error *ngIf="form.get('correo')?.hasError('pattern')"
+        >Correo inválido.</mat-error
+      >
+      <mat-error *ngIf="form.get('correo')?.hasError('min')"
+        >Rango de correo no permitido.</mat-error
+      >
+      <mat-error *ngIf="form.get('correo')?.hasError('max')"
+        >Rango de correo no permitido.</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+    <button mat-raised-button color="primary">Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/areas">
+      <mat-icon> cancel_presentation</mat-icon>
+    </button>
+  </form>
+</div>

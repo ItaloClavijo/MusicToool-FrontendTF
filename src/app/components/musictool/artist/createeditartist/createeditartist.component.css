@@ -1,0 +1,74 @@
+/* Contenedor del título */
+.title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Título */
+  .title {
+    color: #004d99; /* Azul oscuro */
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Formulario */
+  .example-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #004d99; /* Azul oscuro */
+    border-radius: 8px;
+    background-color: #e6f0ff; /* Azul claro */
+  }
+  
+  /* Campos del formulario */
+  .example-full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .mat-form-field {
+    display: block;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #004d99; /* Azul oscuro */
+  }
+  
+  .mat-form-field-label {
+    color: #003366; /* Azul medio */
+  }
+  
+  .mat-input-element {
+    color: #00264d; /* Azul más oscuro */
+  }
+  
+  .mat-hint {
+    color: #336699; /* Azul intermedio */
+  }
+  
+  .mat-error {
+    color: #ff1a1a; /* Rojo para los errores */
+  }
+  
+  /* Botones */
+  button.mat-raised-button {
+    margin-right: 8px;
+  }
+  
+  button.mat-raised-button[color="primary"] {
+    background-color: #0066cc; /* Azul */
+    color: white;
+  }
+  
+  button.mat-raised-button[color="warn"] {
+    background-color: #ff6666; /* Rojo claro */
+    color: white;
+  }
+  
+  button.mat-raised-button mat-icon {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  
