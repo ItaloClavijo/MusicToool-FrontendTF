@@ -25,8 +25,13 @@ import { SubscriptionComponent } from './components/musictool/subscription/subsc
 import { ArtistComponent } from './components/musictool/artist/artist.component';
 import { CreateeditartistComponent } from './components/musictool/artist/createeditartist/createeditartist.component';
 import { ListartistComponent } from './components/musictool/artist/listartist/listartist.component';
+<<<<<<< HEAD
 import { AllContentsComponent } from './components/musictool/home/all-contents/all-contents.component';
 import { PurchasesComponent } from './components/musictool/home/purchases/purchases.component';
+=======
+import { ReportsComponent } from './components/musictool/reports/reports.component';
+import { Reporte2Component } from './components/musictool/reports/reporte2/reporte2.component';
+>>>>>>> 6665e8ff54c495678b5af58ff3aa67da1ae20838
 
 
 export const routes: Routes = [
@@ -144,5 +149,16 @@ export const routes: Routes = [
     {
         path:'purchases',component:PurchasesComponent,
         canActivate: [segGuard]
-    }
+    },
+    {
+        path:'reportes',
+        component:ReportsComponent,
+        children: [
+          {
+            path: 'reporte02',
+            component: Reporte2Component
+          }
+        ]
+      }
 ];
+

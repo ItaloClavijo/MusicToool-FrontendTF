@@ -3,7 +3,8 @@ import { Content } from '../model/Content';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { SaveContentInLibraries } from '../model/SaveContentInLibraries';
+import { QuantityContentByArtistDTO } from '../model/QuantityContentByArtistDTO';
 
 const base_url = environment.base
 
@@ -37,5 +38,13 @@ export class ContentService {
    }
    delete(id: number){
     return this.Http.delete(`${this.url}/${id}`)
+   }
+
+   getLibraries():Observable<SaveContentInLibraries[]>{
+    return this.Http.get<SaveContentInLibraries[]>(`${this.url}/saveContentInLibraries`)
+   }
+
+   getArtists():Observable<QuantityContentByArtistDTO[]>{
+    return this.Http.get<QuantityContentByArtistDTO[]>(`${this.url}/quantityContentByArtist`)
    }
   }

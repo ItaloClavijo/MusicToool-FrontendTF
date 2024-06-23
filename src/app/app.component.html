@@ -11,6 +11,7 @@
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuMessage" *ngIf="isAdmin() || isAdmin()">Message</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuChat" *ngIf="isMelomano() || isAdmin()">Chat</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuPlans" *ngIf="isMelomano() || isAdmin()">Plans</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuReports" *ngIf="isMelomano() || isAdmin()">Reports</button>
 
 
   <span class="spacer"></span>
@@ -118,6 +119,15 @@
   <button mat-menu-item routerLink="/roles">
     <mat-icon color="primary">more_vert</mat-icon>
     Listar</button>
+</mat-menu>
+
+<mat-menu #menuReports="matMenu">
+  <button mat-menu-item routerLink="/reportes">
+    <mat-icon color="primary">favorite</mat-icon>
+    Reporte1</button>
+  <button mat-menu-item routerLink="/reportes/reportes02">
+    <mat-icon color="primary">more_vert</mat-icon>
+    Reporte2</button>
 </mat-menu>
 
 
