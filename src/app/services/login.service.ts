@@ -64,7 +64,15 @@ export class LoginService {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
       console.log(decodedToken);
-      return decodedToken?.id;
+  
+      let id = decodedToken?.id;
+      if (id) {
+        id = parseInt(id, 10);
+        if (isNaN(id)) {
+          return null;
+        }
+      }
+      return id;
     }
     return null;
   }

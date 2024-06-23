@@ -6,11 +6,11 @@
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuLibrary" *ngIf="isMelomano() || isAdmin()">Library</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuContent" *ngIf="isMelomano() || isAdmin()">Content</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuPurchase" *ngIf="isMelomano()">Purchase</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuUser" *ngIf="isMelomano()">User</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuRoles"*ngIf="isMelomano()">Roles</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuMessage" *ngIf="isMelomano() || isAdmin()">Message</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuUser" *ngIf="isAdmin()">User</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuRoles"*ngIf="isAdmin()">Roles</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuMessage" *ngIf="isAdmin() || isAdmin()">Message</button>
   <button class="ms-3" mat-button [matMenuTriggerFor]="menuChat" *ngIf="isMelomano() || isAdmin()">Chat</button>
-  <button class="ms-3" mat-button [matMenuTriggerFor]="menuPlans" *ngIf="isMelomano()">Plans</button>
+  <button class="ms-3" mat-button [matMenuTriggerFor]="menuPlans" *ngIf="isMelomano() || isAdmin()">Plans</button>
 
 
   <span class="spacer"></span>

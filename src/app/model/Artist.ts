@@ -1,8 +1,6 @@
-
-
 export class Artist{
-    idArtist:Number=0
-    nameArtist: String=""
-    descriptionArtist: String=""
-    emailArtist: String=""
+    idArtist: number = 0
+    nameArtist: string = ""
+    descriptionArtist: string = ""
+    emailArtist: string = ""
 }

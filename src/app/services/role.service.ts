@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Roles } from '../model/Role';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -10,13 +10,13 @@ const base_url = environment.base
   providedIn: 'root'
 })
 export class RoleService {
-  private url = `${base_url}/musictool/users`
+  private url = `${base_url}/musictool/role`
   private ListaCambio = new Subject<Roles[]>()
 
   constructor(private httpClient:HttpClient) { }
 
-  list(){
-    return this.httpClient.get(this.url)
+  list(): Observable<Roles[]>{
+    return this.httpClient.get<Roles[]>(this.url)
   }
 
   insert(r:Roles){
@@ -32,7 +32,7 @@ export class RoleService {
   }
 
   listId(id:number){
-    return this.httpClient.get<Roles>(`${this.url}/${id}}`)
+    return this.httpClient.get<Roles>(`${this.url}/${id}`)
   }
 
   update(r:Roles){
@@ -40,6 +40,6 @@ export class RoleService {
   }
 
   eliminar(id:number){
-    return this.httpClient.delete(`${this.url}/${id}}`)
+    return this.httpClient.delete(`${this.url}/${id}`)
   }
 }
