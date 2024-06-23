@@ -25,6 +25,8 @@ import { SubscriptionComponent } from './components/musictool/subscription/subsc
 import { ArtistComponent } from './components/musictool/artist/artist.component';
 import { CreateeditartistComponent } from './components/musictool/artist/createeditartist/createeditartist.component';
 import { ListartistComponent } from './components/musictool/artist/listartist/listartist.component';
+import { ReportsComponent } from './components/musictool/reports/reports.component';
+import { Reporte2Component } from './components/musictool/reports/reporte2/reporte2.component';
 
 
 export const routes: Routes = [
@@ -134,5 +136,15 @@ export const routes: Routes = [
             { path:'new',title:'Nuevo Artista',component:ListartistComponent },
             { path:'ediciones/:id',title:'Edicion de Artista',component:CreateEditContentComponent } 
         ]
-    }
+    },
+    {
+        path:'reportes',
+        component:ReportsComponent,
+        children: [
+          {
+            path: 'reporte02',
+            component: Reporte2Component
+          }
+        ]
+      }
 ];
