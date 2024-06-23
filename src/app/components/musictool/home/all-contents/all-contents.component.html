@@ -1,0 +1,30 @@
+<div class="container py-5">
+    <h1 class="fw-bold">Todos en Samples</h1>
+
+    <div class="row">
+        @for (content of contents; track content.idContent) {
+            <div class="col-md-4 mb-3">
+                <mat-card class="content-card">
+                    <img mat-card-image [src]="content.coverContent | apiImg" alt="content.titleContent">
+                    <mat-card-content>
+                    <a class="h4" [routerLink]="['/content/',content.idContent]">{{content.titleContent}}</a>   
+                    <p>
+                        {{content.descriptionContent | slice:0:40}}...
+                    </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    <button mat-raised-button class="w-100 colorb">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                        Agregar al Carrito
+                    </button>
+                    <button mat-raised-button [routerLink]="['/content/',content.idContent]" class="w-100">
+                        <mat-icon>read_more</mat-icon>
+                        Detalles
+                    </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        }
+</div>
+
+</div>

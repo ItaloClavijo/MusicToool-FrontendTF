@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Content } from '../model/Content';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.base
 
@@ -14,7 +15,7 @@ export class ContentService {
   private icListaCambio=new Subject<Content[]>()
   constructor(private Http: HttpClient) {}
 
-  list() {
+  list(): Observable<Content[]> {
     return this.Http.get<Content[]>(this.url);
   }
   insert(icR: Content) {

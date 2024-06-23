@@ -4,5 +4,5 @@ export class PaypalOrderResponse {
 
 export class PaypalCaptureResponse {
     completed: boolean = false;
-    purchaseId: number = 0;
+    idPurchase: number = 0;
 }

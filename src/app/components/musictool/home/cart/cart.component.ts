@@ -26,19 +26,22 @@ constructor(
 loading = false;
 ngOnInit(): void {
   const token = this.route.snapshot.queryParamMap.get('token');
+  console.log(token)
     const payerId = this.route.snapshot.queryParamMap.get('PayerID');
+    console.log(payerId)
 
+    this.router.navigate(['/purchases']);
+    /*
     if (token && payerId) {
-      this.loading = true;
-
       this.checkoutService.capturePaypalOrder(token)
         .subscribe(response => {
           if (response.completed) {
             this.cartService.clear();
-            this.router.navigate(['/purchases', response.purchaseId]);
+            this.router.navigate(['/purchases']);
           }
         })
     }
+        */
 }
 get contentsInCart() {
   return this.cartService.contents();
@@ -53,13 +56,19 @@ removeContentFromCart(content: Content) {
 }
 
 pay() {
+ 
+
   const contentIds = this.cartService.contents().map(item => item.idContent);
+  
 
   this.loading = true;
 
+  console.log("Ids de contenido: ",contentIds)
+
   this.purchaseService.create(contentIds)
     .subscribe(purchase => {
-      this.checkoutService.createPaypalOrder(purchase.id)
+      console.log("Purchase id: ",purchase.idPurchase)
+      this.checkoutService.createPaypalOrder(purchase.idPurchase)
         .subscribe(response => {
           window.location.href = response.paypalUrl;
         })

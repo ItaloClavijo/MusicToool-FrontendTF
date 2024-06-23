@@ -18,7 +18,7 @@ export class CheckoutService {
   }
 
   capturePaypalOrder(orderId: string) {
-    return this.http.post<PaypalCaptureResponse>(`${environment.base}/checkout/paypal/capture?orderId=${orderId}`, null);
+    return this.http.post<PaypalCaptureResponse>(`${environment.base}/musictool/checkout/paypal/capture?orderId=${orderId}`, null);
   }
 
 }

@@ -2,17 +2,17 @@ import { Content } from "./Content";
 
 
 export class Purchase {
-    id:            number = 0;
-    total:         number = 0;
-    createdAt:     string = "";
-    paymentStatus: string = "";
+    idPurchase:            number = 0;
+    purchaseTotal: number = 0;
+    purchaseDate:     string = "";
+    purchasePaymentStatus: string = "";
     customer:      null = null;
     items:         Item[] = [];
 }
 
 export class Item {
-    id:                 number = 0;
-    price:              number = 0;
-    downloadsAvailable: number = 0;
-    content:            Content = new Content();
+    idPurchaseContent:                 number = 0;
+    purchaseContentPrice:              number = 0;
+    purchaseContentAvailableDownloads: number = 0;
+    contentId:            Content = new Content();
 }
