@@ -1,0 +1,38 @@
+<div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="../../../../assets/logo.png" class="logo" alt="Logo de la empresa" />
+        <h2>Registrate</h2>
+      </div>
+      <form [formGroup]="form" (submit)="registrar()">
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="nombre">
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+            <mat-error *ngIf="form.get('nombre')?.hasError('minLenght')">Mínimo permitido es de 3</mat-error>
+            <mat-error *ngIf="form.get('nombre')?.hasError('maxLenght')">Máximo permitido es de 30</mat-error>
+            <mat-error *ngIf="form.get('nombre')?.hasError('usernameTaken')">El nombre de usuario ya está en uso</mat-error>
+        </mat-form-field>
+          <br />
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="contra">
+            <mat-error *ngIf="form.get('contra')?.hasError('required')">La contraseña es obligatorio.</mat-error>
+            <mat-error *ngIf="form.get('contra')?.hasError('min')">Rango mínimo de 10 carácteres</mat-error>
+            <mat-error *ngIf="form.get('contra')?.hasError('max')">Rango de contraseña no permitido.</mat-error>
+        </mat-form-field>
+          <br />
+        <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="correo">
+              <mat-error *ngIf="form.get('correo')?.hasError('required')">El correo es obligatorio.</mat-error>
+              <mat-error *ngIf="form.get('correo')?.hasError('pattern')">Correo inválido.</mat-error>
+              <mat-error *ngIf="form.get('correo')?.hasError('min')">Rango de correo no permitido.</mat-error>
+              <mat-error *ngIf="form.get('correo')?.hasError('max')">Rango de correo no permitido.</mat-error>
+        </mat-form-field>
+        <div class="text-end">
+            <button mat-raised-button color="primary">Agregar</button>
+        </div>
+    </form>
+    </div>
+  </div>

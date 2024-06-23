@@ -20,6 +20,8 @@ import { LandingComponent } from './components/musictool/landing/landing.compone
 import { ContentDetailsComponent } from './components/musictool/home/content-details/content-details.component';
 import { ConversationComponent } from './components/musictool/chat/conversation/conversation.component';
 import { CartComponent } from './components/musictool/home/cart/cart.component';
+import { RegisterComponent } from './components/musictool/register/register.component';
+import { SubscriptionComponent } from './components/musictool/subscription/subscription.component';
 
 
 export const routes: Routes = [
@@ -38,6 +40,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
     },
     {
     path:'library',
@@ -101,10 +107,7 @@ export const routes: Routes = [
         canActivate: [segGuard] 
     },
     {
-        path:'plans',component:PlanComponent,
-        children:[
-            { path:'creaeditaplan',component:CreaeditaplanComponent },
-        ],
+        path:'plans',component:SubscriptionComponent,
         canActivate: [segGuard]
     },
     {

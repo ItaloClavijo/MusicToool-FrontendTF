@@ -104,7 +104,7 @@ export class CreateedituserComponent implements OnInit {
       this.uS.existsByUsername(username).subscribe((exists: boolean) => {
         if (exists && !this.edicion) {
           this.form.controls['usuario'].setErrors({ usernameTaken: true });
-          this.snackbar.open('El nombre de usuario ya está en usoEl nombre de usuario ya está en uso', '', {
+          this.snackbar.open('El nombre de usuario ya está en uso', '', {
             duration: 3000,
           });
         } else {
