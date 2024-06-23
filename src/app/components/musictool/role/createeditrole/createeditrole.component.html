@@ -1,1 +1,52 @@
-<p>createeditrole works!</p>
+<div class="title-container">
+    <h2 class="title">Registro de Roles</h2>
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      <br />
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          <mat-option *ngFor="let c of listaUsuarios" [value]="c.id">
+            {{ c.username }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+          >El usuario es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripción:</mat-label>
+        <textarea
+          matInput
+          placeholder="Descripción"
+          formControlName="descripcion"
+        ></textarea>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+          >La descripción es obligatoria.</mat-error
+        >
+      </mat-form-field>
+  
+      <br />
+    
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Rol a asignar</mat-label>
+        <mat-select formControlName="roles">
+          <mat-option *ngFor="let g of listaRoles" [value]="g.value">
+            {{ g.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('roles')?.hasError('required')"
+          >El rol es obligatorio.</mat-error
+        >
+      </mat-form-field>
+  
+      <br />
+      <button mat-raised-button color="primary">Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="/roles">
+        Cancelar
+      </button>
+    </form>
+  </div>
+  

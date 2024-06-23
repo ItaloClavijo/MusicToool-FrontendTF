@@ -114,7 +114,6 @@ export class CreateedituserComponent implements OnInit {
           this.user.password = this.form.value.contra;
           this.user.enabled = true;
           this.user.email = this.form.value.correo;
-          this.user.file = this.form.value.file;
           if (this.form.value.desc === '') {
             this.user.description = 'Hola, soy ' + `${this.form.value.nombre}`;
           } else {
@@ -140,8 +139,7 @@ export class CreateedituserComponent implements OnInit {
           contra: new FormControl(data.password),
           estado: new FormControl(data.enabled),
           correo: new FormControl(data.email),
-          desc: new FormControl(data.description),
-          file: new FormControl(data.file)
+          desc: new FormControl(data.description)
         });
       });
     }

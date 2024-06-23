@@ -8,6 +8,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Users } from '../../../../model/User';
 import { UserService } from '../../../../services/user.service';
+import { ApiImgPipe } from '../../../../../shared/api-img.pipe';
 
 @Component({
   selector: 'app-listuser',
@@ -19,7 +20,8 @@ import { UserService } from '../../../../services/user.service';
     MatFormFieldModule,
     RouterLink,
     MatInputModule,
-    MatButton
+    MatButton,
+    ApiImgPipe
   ],
   templateUrl: './listuser.component.html',
   styleUrl: './listuser.component.css'
@@ -29,6 +31,7 @@ export class ListuserComponent {
   
   displayedColumns: string[] = [
     'codigo',
+    'cover',
     'usuario',
     'activo',
     'correo',

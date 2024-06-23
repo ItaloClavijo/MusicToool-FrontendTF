@@ -1,6 +1,6 @@
 <div class="title-container">
     <div>
-        <h1>Lista de áreas verdes</h1>
+        <h1>Lista Usuarios</h1>
     </div>
     <div class="container">
         <div class="table-wrapper">
@@ -10,6 +10,19 @@
                     <th mat-header-cell *matHeaderCellDef>Código</th>
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
+
+                <ng-container matColumnDef="cover">
+                    <th mat-header-cell *matHeaderCellDef> Contenido </th>
+                    <td mat-cell *matCellDef="let element">
+                      <div class="d-flex gap-2">
+                          <img [src]="element.coverContent | apiImg" alt="" class="mw-96px">
+                          <div class="fw-bold">
+                              {{element.titleContent}}
+                              <p>{{element.descriptionContent}}</p>
+                          </div>
+                      </div>
+                  </td>
+                  </ng-container>
         
                 <ng-container matColumnDef="usuario">
                     <th mat-header-cell *matHeaderCellDef> Nombre de Usuario </th>

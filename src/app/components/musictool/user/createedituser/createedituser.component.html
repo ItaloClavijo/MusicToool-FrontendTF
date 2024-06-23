@@ -53,18 +53,6 @@
                 <mat-error *ngIf="form.get('desc')?.hasError('max')">Rango máximo superado.</mat-error>
             </mat-form-field>
 
-            <div class="file-upload-container mb-3" *ngIf="edicion">
-                <label>Avatar</label>
-                <input
-                  id="mp3"
-                  type="file"
-                  class="form-control"
-                  accept=".png,.jpg,.jpeg"
-                  (change)="uploadFile($event, 'file')"
-                />
-                <div class="small text-muted">ruta actual: {{ form.get("file")!.value }}</div>
-              </div>
-
             <div class="text-end">
                 <button mat-raised-button color="primary">Agregar</button>
                 <button mat-raised-button color="warn" routerLink="/usuarios">
