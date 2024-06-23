@@ -22,6 +22,9 @@ import { ConversationComponent } from './components/musictool/chat/conversation/
 import { CartComponent } from './components/musictool/home/cart/cart.component';
 import { RegisterComponent } from './components/musictool/register/register.component';
 import { SubscriptionComponent } from './components/musictool/subscription/subscription.component';
+import { ArtistComponent } from './components/musictool/artist/artist.component';
+import { CreateeditartistComponent } from './components/musictool/artist/createeditartist/createeditartist.component';
+import { ListartistComponent } from './components/musictool/artist/listartist/listartist.component';
 
 
 export const routes: Routes = [
@@ -124,5 +127,12 @@ export const routes: Routes = [
             { path:'conversation/:id',component:ConversationComponent },
         ],
         canActivate: [segGuard]
+    },
+    {
+        path:'artists', title: 'Artistas', component:ArtistComponent,
+        children:[
+            { path:'new',title:'Nuevo Artista',component:ListartistComponent },
+            { path:'ediciones/:id',title:'Edicion de Artista',component:CreateEditContentComponent } 
+        ]
     }
 ];
